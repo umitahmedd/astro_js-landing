@@ -1,0 +1,64 @@
+---
+import {
+  Accordion,
+  AccordionItem,
+  Card,
+  Modal,
+} from "accessible-astro-components";
+
+const frameworks = [
+  { url: "images/react.png", iamgeAlt: "react js" },
+  { url: "images/vue.png", iamgeAlt: "vue js" },
+  { url: "images/preact.png", iamgeAlt: "preact js" },
+  { url: "images/svetle.png", iamgeAlt: "svetle js" },
+  { url: "images/lit.png", iamgeAlt: "lit js" },
+  { url: "images/tailwind.png", iamgeAlt: "lit js" },
+  { url: "images/solid.png", iamgeAlt: "solid js" },
+  { url: "images/alphine.png", iamgeAlt: "alphine js" },
+];
+---
+
+<div>
+  <h1 class="text-6xl text-center max-w-4xl mx-auto w-full font-medium mt-40">
+    Zero to website in <span class="font-semibold">whoa</span>
+  </h1>
+
+  <div class="bg-[rgb(34,39,45)] p-6 mt-10">
+    <p class="text-start text-gray-400 text-xl">Easy to use</p>
+
+    <div class="flex items-center justify-between gap-10 py-10">
+      <div>
+        <h1 class="text-6xl mx-auto w-full font-medium mt-6">
+          Designed for your <br /> favorite UI library
+        </h1>
+
+        <p class="max-w-md mt-6">
+          Keep using your favorite UI framework and existing UI components in
+          Astro. Migrate from
+          <a
+            class="hover:opacity-50 transition-all text-white border-b border-b-white"
+            href=""
+          >
+            Create React App
+          </a>
+          to Astro in minutes.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-4 gap-3">
+        {
+          frameworks &&
+            frameworks.map((framework, index) => (
+              <div
+                class={`bg-white flex items-center justify-center rounded-full w-28 h-28 ${
+                  index >= 4 ? "relative right-14" : ""
+                }`}
+              >
+                <img class="p-6" src={framework.url} alt={framework.iamgeAlt} />
+              </div>
+            ))
+        }
+      </div>
+    </div>
+  </div>
+</div>
