@@ -1,0 +1,156 @@
+---
+import {
+  Accordion,
+  AccordionItem,
+  Card,
+  Modal,
+} from "accessible-astro-components";
+
+const accordionItems = [
+  {
+    title: "Blogs ",
+    text: "Build personal and professional blogs with Astro's built-in Markdown support and content APIs.",
+    themes: { text: "Blog Themes", url: "/" },
+  },
+
+  {
+    title: "Marketing ",
+    text: "Stand out from the crowd with a lightning fast site that ranks higher in SEO.",
+    themes: { text: "Marketing themes", url: "/" },
+  },
+
+  {
+    title: "Agencies",
+    text: "Agencies use Astro to build fast websites, faster. Customize every site with full control over your frontend code.",
+    themes: { text: "Agency themes", url: "/" },
+  },
+
+  {
+    title: "E-commerce ",
+    text: "Time is money. Give your customers a better shopping experience and grow your business faster.",
+    themes: { text: "E-commerce themes", url: "/" },
+  },
+
+  {
+    title: "Portfolios ",
+    text: "Put your best foot forward with a portfolio that performs. Help people get to know you (and your work) faster.",
+    themes: { text: "Portfolio themes", url: "/" },
+  },
+];
+
+const categoryImagesPt = [
+  {
+    id: 0,
+    text: "Lorem Ipsum dolor sit amet",
+    url: "images/Agencies.png",
+    imageAlt: "lorem",
+    active: true,
+  },
+  {
+    id: 1,
+    text: "Lorem Ipsum dolor sit amet",
+    url: "images/portfolios.webp",
+    imageAlt: "lorem",
+    active: false,
+  },
+  {
+    id: 2,
+    text: "Lorem Ipsum dolor sit amet",
+    url: "images/E-commerce.webp",
+    imageAlt: "lorem",
+    active: false,
+  },
+  {
+    id: 3,
+    text: "Lorem Ipsum dolor sit amet",
+    url: "images/Marketing.webp",
+    imageAlt: "lorem",
+    active: false,
+  },
+
+  {
+    id: 4,
+    text: "Lorem Ipsum dolor sit amet",
+    url: "images/Blogs.png",
+    imageAlt: "lorem",
+    active: false,
+  },
+];
+
+const categoryImages = categoryImagesPt.sort(function (a, b) {
+  return b.id - a.id;
+});
+
+const spacigns = [10, 20, 40, 60, 80];
+
+const changeCategory = (category_id) => {
+  console.log(category_id);
+};
+---
+
+<div class="text-center">
+  <h1 class="text-6xl max-w-4xl mx-auto w-full font-medium mt-40">
+    Build it with Astro
+  </h1>
+
+  <p class="font-light max-w-2xl text-2xl mx-auto mt-5 text-gray-300">
+    Astro has been downloaded millions of times by developers all over the world
+    to build amazing websites.
+  </p>
+
+  <div class="flex items-center justify-center gap-10">
+    <div class="max-w-sm mt-20">
+      <Accordion>
+        {
+          accordionItems &&
+            accordionItems.map((item) => (
+              <div class="my-2 bg-[rgb(34,39,45)] font-light">
+                <AccordionItem header={item.title}>
+                  <p class="text-start">{item.text}</p>
+                  <div class="w-full flex items-center justify-between mt-3">
+                    <a
+                      class="hover:opacity-50 transition-all text-white border-b border-b-white"
+                      href=""
+                    >
+                      {item.themes.text}
+                    </a>
+                    <a
+                      class="hover:opacity-50 transition-all text-white border-b border-b-white"
+                      href=""
+                    >
+                      See it in the wild
+                    </a>
+                  </div>
+                </AccordionItem>
+              </div>
+            ))
+        }
+      </Accordion>
+    </div>
+
+    <div class="relative">
+      {
+        categoryImages &&
+          categoryImages.map((item) => (
+            <div
+              class={`w-[600px] border border-slate-800  ${
+                item.active === true ? "" : `absolute`
+              }`}
+              style={`top: ${spacigns[item.id]}px; left:${spacigns[item.id]}px; 
+              z-index: -${spacigns[item.id]};`}
+            >
+              <p class="w-full py-1 bg-[rgb(34,39,45)]">{item.text}</p>
+              <img class=" bg-cover" src={item.url} alt={item.imageAlt} />
+            </div>
+          ))
+      }
+      <button id="changeCategory">hello</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  document
+    .getElementById("changeCategory")
+    .addEventListener("click", changeCategory);
+</script>

@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// $bg-color: rgb(50 69 255);
+* {
+  color: white;
+  box-sizing: border-box;
+}
+
+.button {
+  @apply rounded-full bg-white text-blue-500 hover:opacity-80 transition-all;
+}
+
+//
+.module-border-wrap {
+  position: relative;
+  background: linear-gradient(to right, blue, rgb(175, 5, 175));
+  padding: 2px;
+}
+
+//
+.navbar {
+  @apply flex items-center justify-between gap-4 px-3 py-4 max-w-[1536px] w-full mx-auto border-b border-b-gray-500;
+}
+
+.nav-item {
+  @apply text-white transition-all;
+
+  &:hover {
+    @apply opacity-30;
+  }
+
+  &-dropdown {
+    @apply flex items-center justify-center gap-2;
+  }
+}
+
+// Social Media Icon
+.social-icon {
+  @apply transition-all;
+
+  &-small {
+    @apply max-w-[30px];
+  }
+
+  &-normal {
+    @apply max-w-[40px] w-full;
+  }
+
+  &-medium {
+    @apply max-w-[60px];
+  }
+
+  &-large {
+    @apply max-w-[70px] w-full;
+  }
+
+  &-with-bg {
+    @apply bg-white max-w-[70px] w-full rounded-full p-10;
+  }
+}
+
+.logo {
+  &-normal {
+    @apply max-w-[250px] w-full;
+  }
+
+  &-small {
+    @apply max-w-[120px];
+  }
+
+  &-medium {
+    @apply max-w-[150px];
+  }
+
+  &-big {
+    @apply max-w-[300px];
+  }
+}
