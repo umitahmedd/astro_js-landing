@@ -1,0 +1,53 @@
+---
+import "@assets/index.scss";
+import { fade } from "astro:transitions";
+
+const menuItems = [
+  { name: "Documentation", url: "/" },
+  { name: "Showcase", url: "/" },
+  { name: "Resources", url: "/" },
+  { name: "Blog", url: "/" },
+];
+
+const social = [
+  { url: "images/logos/github-white-icon.png", imageAlt: "Lorem Ipsum" },
+  { url: "images/logos/discord-white-icon.png", imageAlt: "Lorem Ipsum" },
+  { url: "images/logos/x-white-icon.png", imageAlt: "Lorem Ipsum" },
+];
+---
+
+<div transition:animate={fade({ duration: "0.4s" })} class="navbar">
+  <div class="flex items-center gap-16">
+    <a href="/">
+      <img
+        class="logo-medium"
+        src="images/logos/astro-logo-light.png"
+        alt=""
+      /></a
+    >
+
+    {
+      menuItems &&
+        menuItems.map((item) => (
+          <a class="nav-item" href="#">
+            {item.name}
+          </a>
+        ))
+    }
+  </div>
+
+  <div class="flex items-center gap-2">
+    {
+      social &&
+        social.map((item) => (
+          <a href="#">
+            <img
+              class="social-icon-normal"
+              src={item.url}
+              alt={item.imageAlt}
+            />
+          </a>
+        ))
+    }
+  </div>
+</div>
