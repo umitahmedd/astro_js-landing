@@ -1,0 +1,17 @@
+---
+interface Props {
+  text: string;
+  buttonType: string;
+  roundSize: number;
+  size: number;
+}
+const { text, buttonType, roundSize, size } = Astro.props;
+---
+
+<button
+  class={`button ${
+    size && size === 1 ? "px-6 py-3" : size === 2 ? "px-10 py-4" : "px-8 py-3"
+  } `}
+>
+  <slot />
+</button>

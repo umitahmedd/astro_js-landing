@@ -1,0 +1,65 @@
+---
+import "@assets/index.scss";
+import { fade } from "astro:transitions";
+import LearnMoreButton from "./common/LearnMoreButton.astro";
+import Button from "./common/Button.astro";
+import ChevronRight from "astro-heroicons/mini/ChevronRight.astro";
+import Plus from "astro-heroicons/mini/Plus.astro";
+
+const teams = [
+  { url: "images/logos/google-white-logo.png", imageAlt: "Lorem Ipsum" },
+  { url: "images/logos/microsoft-white-logo.png", imageAlt: "Lorem Ipsum" },
+  { url: "images/logos/nordvpn-white-logo.png", imageAlt: "Lorem Ipsum" },
+  { url: "images/logos/theguardian-white-logo.png", imageAlt: "Lorem Ipsum" },
+  { url: "images/logos/rokt-white-logo.png", imageAlt: "Lorem Ipsum" },
+  { url: "images/logos/trivago-white-logo.png", imageAlt: "Lorem Ipsum" },
+];
+---
+
+<div
+  class="py-32 px-3 w-full text-center"
+  transition:animate={fade({ duration: "0.4s" })}
+>
+  <LearnMoreButton />
+
+  <h1 class="text-7xl max-w-5xl mx-auto w-full font-medium mt-10">
+    The web framework for <br /> content-driven websites
+  </h1>
+
+  <p class="font-light max-w-2xl text-2xl mx-auto mt-5">
+    Astro powers the world's fastest websites, client-side web apps, dynamic API
+    endpoints, and everything in-between.
+  </p>
+
+  <div class="mt-10 flex items-center justify-center gap-4">
+    <Button size={2}>Get Started</Button>
+
+    <div class="module-border-wrap">
+      <div class="flex items-center gap-2 justify-center pl-2 bg-gray-900">
+        <p class="flex gap-3 items-center justify-start font-medium">
+          <ChevronRight class="w-6" />
+          <span>npm create astro@latest</span>
+        </p>
+
+        <button
+          class="rounded-sm py-2 px-3 m-1 hover:opacity-80 hover:scale-105 hover:bg-gray-900 transition-all"
+        >
+          <Plus class="w-7" />
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex items-center text-start justify-between gap-6 mt-32">
+    <p class="text-gray-400 text-lg">
+      Used by the best <br /> developers and teams <br /> around the world:
+    </p>
+
+    {
+      teams &&
+        teams.map((team) => (
+          <img class="w-40" src={team.url} alt={team.imageAlt} />
+        ))
+    }
+  </div>
+</div>
