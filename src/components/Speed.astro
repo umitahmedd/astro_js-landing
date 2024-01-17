@@ -1,0 +1,77 @@
+---
+import {
+  Accordion,
+  AccordionItem,
+  Card,
+  Modal,
+} from "accessible-astro-components";
+
+const frameworkSpeeds = [
+  { name: "Astro", percentage: 98 },
+  { name: "Gatsby", percentage: 68 },
+  { name: "Next.js", percentage: 63 },
+  { name: "Wordpress", percentage: 58 },
+  { name: "Nuxt", percentage: 54 },
+];
+---
+
+<div class="text-center">
+  <h1 class="text-6xl max-w-4xl mx-auto w-full font-medium mt-40">
+    Full speed
+  </h1>
+
+  <p class="font-light max-w-2xl text-2xl mx-auto mt-5 text-gray-300">
+    Islands optimize your website like no other web framework can. Leverage
+    Astro's unique page load performance to improve conversion rates, Core Web
+    Vitals, and SEO.
+  </p>
+
+  <div class="bg-[rgb(34,39,45)] p-10 max-w-[1000px] mx-auto mt-10">
+    <p class="text-start text-gray-400 text-xl">
+      Real-World Performance Comparison
+    </p>
+
+    <div class="mt-6 w-full">
+      {
+        frameworkSpeeds &&
+          frameworkSpeeds.map((framework) => (
+            <div class="flex items-center justify-end gap-2 w-full mt-2">
+              <h2 class="text-2xl">{framework.name}</h2>
+              <div class={`border rounded-md p-1  w-[800px]`}>
+                <div
+                  class={` ${
+                    framework.name === "Astro"
+                      ? "bg-gradient-to-r from-blue-500  to-teal-500 "
+                      : "bg-gray-600"
+                  } 
+                  flex items-center justify-end h-8 rounded-sm `}
+                  style={`width: ${framework.percentage}%;`}
+                >
+                  <p class="pr-4 text-light text-gray-300 ">
+                    {framework.percentage}%
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))
+      }
+    </div>
+
+    <p class="text-center mt-6">
+      Based on
+      <a
+        class="hover:opacity-50 transition-all text-white border-b border-b-white"
+        href=""
+        >HTTP Archive
+      </a>
+      real-world performance data (Lighthouse, P90) •
+
+      <a
+        class="hover:opacity-50 transition-all text-white border-b border-b-white"
+        href=""
+      >
+        Read the full report
+      </a>
+    </p>
+  </div>
+</div>
